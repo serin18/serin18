@@ -1,0 +1,23 @@
+apply plugin: "com.android.application"
+apply plugin: "com.facebook.react.application"
+
+android {
+    // Rest of your existing configurations...
+
+    dependencies {
+        implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'
+        implementation fileTree(dir: "libs", include: ["*.jar"])
+        implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+        implementation "com.facebook.react:react-native:0.66.4" // Update to your React Native version
+    }
+
+    // Add the following block at the end of the file
+    task copyDownloadableDepsToLibs(type: Copy) {
+        from configurations.compile
+        into 'libs'
+    }
+}
+
+dependencies {
+    // Add your additional dependencies here
+}
